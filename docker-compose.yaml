@@ -17,7 +17,7 @@ services:
     image: mysql:8
     container_name: mysql-db
     ports:
-      - "8082:3306"
+      - "3306:3306"  # Mapping port 3306 inside the container to port 3306 on the host
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: appdb
