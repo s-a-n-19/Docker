@@ -6,12 +6,16 @@ services:
     container_name: flask-app
     ports:
       - "5000:5000"
+    depends_on:
+      - mysql-db
 
   node-app:
     image: node:14
     container_name: node-app
     ports:
       - "3000:3000"
+    depends_on:
+      - mysql-db
 
   mysql-db:
     image: mysql:8
