@@ -1,21 +1,18 @@
 version: '3.7'
 
 services:
-  flask-app:
-    image: python:3.8-slim
-    container_name: flask-app
+  httpd-app:
+    image: httpd:latest
+    container_name: httpd-app
     ports:
-      - "5000:5000"
-    depends_on:
-      - mysql-db
+      - "8080:80"  # Mapping port 80 inside the container to port 8080 on the host
 
-  node-app:
-    image: node:14
-    container_name: node-app
+  jenkins-app:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-app
     ports:
-      - "3000:3000"
-    depends_on:
-      - mysql-db
+      - "8081:8080"  # Mapping Jenkins' port 8080 inside the container to port 8081 on the host
+      - "50000:50000"  # For Jenkins agents
 
   mysql-db:
     image: mysql:8
