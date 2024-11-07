@@ -33,7 +33,7 @@ services:
     environment:
       MONGO_URL: mongodb://mongo_db_host:27017/dev
     ports:
-      - "22:3000"
+      - "3306:3000"
     depends_on:
       - mongo
     links:
